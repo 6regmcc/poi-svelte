@@ -1,13 +1,12 @@
 <script>
     import TitleBar from './TitleBar.svelte';
-    import WelcomeNavigator from './WelcomeNavigator.svelte';
 </script>
 
 <div class="columns is-vcentered">
     <div class="column is-two-thirds">
-        <TitleBar title={'POI App Inc.'} subTitle={'Sign up or Log in'} />
+        <TitleBar title={'Poi app .'} subTitle={'Sign up or Log in'} />
     </div>
     <div class="column">
-        <WelcomeNavigator />
+        <slot />
     </div>
 </div>
