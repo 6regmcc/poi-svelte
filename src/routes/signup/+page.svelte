@@ -1,0 +1,18 @@
+<script>
+    import Header from '$lib/Header.svelte';
+    import SignupForm from '$lib/SignupForm.svelte';
+</script>
+
+<Header />
+
+<div class="columns">
+    <div class="column">
+        <div class="box">
+            <h1 class="title">Singup</h1>
+            <SignupForm />
+        </div>
+    </div>
+    <div class="column has-text-centered">
+        <img alt="homer" src="/landmarks-positions-location-points-interest.jpeg" width="300" />
+    </div>
+</div>
