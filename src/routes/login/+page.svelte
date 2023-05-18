@@ -2,6 +2,7 @@
     import Header from '$lib/Header.svelte';
     import LoginForm from '$lib/LoginForm.svelte';
     import WelcomeNavigator from '$lib/WelcomeNavigator.svelte';
+
 </script>
 
 <Header>
@@ -10,7 +11,7 @@
 
 <div class="columns">
     <div class="column has-text-centered">
-        <img alt="homer" src="/landmarks-positions-location-points-interest.jpeg" width="300" />
+        <img alt="poi2" src="/landmarks-positions-location-points-interest.jpeg" width="300" />
     </div>
     <div class="column">
         <div class="box">

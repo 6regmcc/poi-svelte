@@ -1,11 +1,11 @@
 <script>
     import Header from '$lib/Header.svelte';
     import CategoryList from '$lib/CategoryList.svelte';
-    import WelcomeNavigator from '$lib/WelcomeNavigator.svelte';
+    import MainNavigator from '$lib/MainNavigator.svelte';
 </script>
 
 <Header>
-    <WelcomeNavigator />
+    <MainNavigator />
 </Header>
 
 <div class="columns">

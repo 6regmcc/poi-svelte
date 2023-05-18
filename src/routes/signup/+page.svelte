@@ -16,6 +16,6 @@
         </div>
     </div>
     <div class="column has-text-centered">
-        <img alt="homer" src="/landmarks-positions-location-points-interest.jpeg" width="300" />
+        <img alt="poi" src="/landmarks-positions-location-points-interest.jpeg" width="300" />
     </div>
 </div>
