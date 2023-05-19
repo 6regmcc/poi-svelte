@@ -1,8 +1,8 @@
 <script>
     import Header from '$lib/Header.svelte';
-    import CreateCategory from '$lib/CreateCategory.svelte';
+    import PoiList from '$lib/PoiList.svelte';
     import MainNavigator from '$lib/MainNavigator.svelte';
-    import CategoryList from "../../lib/CategoryList.svelte";
+    import PoiForm from '$lib/PoiForm.svelte'
 </script>
 
 <Header>
@@ -14,9 +14,8 @@
         <img alt="Poi marker" src="poi_marker.png" width="300" />
     </div>
     <div class="column box has-text-centered">
-        <h1 class="title is-4">Create Category!</h1>
-        <CreateCategory />
-        <h1 class="title is-4">Category List</h1>
-        <CategoryList />
+        <h1 class="title is-4">Pois</h1>
+        <PoiList />
+        <PoiForm />
     </div>
 </div>

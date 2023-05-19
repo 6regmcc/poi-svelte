@@ -40,13 +40,13 @@ export const poiService = {
     lastName: lastName,
     email: email,
     password: password
-};
+    };
     await axios.post(this.baseUrl + "/api/users", userDetails);
     return true;
-} catch (error) {
+        } catch (error) {
     return false;
-}
-},
+        }
+    },
     reload() {
         const poiCredentials = localStorage.donation;
         if (poiCredentials) {
@@ -57,5 +57,48 @@ export const poiService = {
             });
             axios.defaults.headers.common["Authorization"] = "Bearer " + savedUser.token;
         }
+    },
+    async create(poi) {
+        try {
+            const response = await axios.post(this.baseUrl + "/api/categories/" + poi.category + "/poi", poi);
+            return response.status == 200;
+        } catch (error) {
+            return false;
+        }
+    },
+
+    async getCategories() {
+        try {
+            const response = await axios.get(this.baseUrl + "/api/categories");
+            return response.data;
+        } catch (error) {
+            return [];
+        }
+    },
+
+    async getCategorieById(id) {
+        try {
+            const response = await axios.get(this.baseUrl + "/api/categories/" + id);
+            return response.data;
+        } catch (error) {
+            return [];
+        }
+    },
+
+    async getPois() {
+        try {
+            const response = await axios.get(this.baseUrl + "/api/pois");
+            let pois = response.data
+            pois.map(async (poi, index) => {
+                let category = await poiService.getCategorieById(poi.category)
+                poi.categoryText = category.name
+                //poi.test = "test"
+            })
+            return pois;
+        } catch (error) {
+            return [];
+        }
     }
+
+
 };
