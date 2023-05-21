@@ -5,9 +5,10 @@
     import { poiService } from "../services/poi-service";
 
     let name = 0;
+    let description = ""
     let latitude = 0
     let longitude = 1
-    let description = ""
+
 
     let categoryList = [];
     let selectedCategory = "";
@@ -18,11 +19,25 @@
         categoryList = await poiService.getCategories();
     });
 
+
     async function createPoi() {
-        if (selectedCategory && name && latitude && longitude && description) {
-            // TODO - make donation
+        if (selectedCategory && name && description && latitude && longitude) {
+            const poi = {
+                name: name,
+                description: description,
+                latitude: latitude,
+                longitude: longitude,
+                category_id: selectedCategory,
+
+            };
+            const success = await poiService.create(poi);
+            if (!success) {
+                message = "Failed to create POI not completed - some error occurred";
+                return;
+            }
+            message = `Poi created`;
         } else {
-            message = "Please select Category, name, latitude, longitude and description";
+            message = "Please select amount, method and candidate";
         }
     }
 </script>
@@ -49,7 +64,7 @@
         <div class="select">
             <select style="text-transform:capitalize" bind:value={selectedCategory}>
                 {#each categoryList as category}
-                    <option >{category.name}</option>
+                    <option value={category._id}>{category.name}</option>
                 {/each}
             </select>
         </div>

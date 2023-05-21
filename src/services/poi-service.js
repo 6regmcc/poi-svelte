@@ -59,8 +59,9 @@ export const poiService = {
         }
     },
     async create(poi) {
+
         try {
-            const response = await axios.post(this.baseUrl + "/api/categories/" + poi.category + "/poi", poi);
+            const response = await axios.post(this.baseUrl + "/api/categories/" + poi.category_id + "/poi", poi);
             return response.status == 200;
         } catch (error) {
             return false;
@@ -84,6 +85,8 @@ export const poiService = {
             return [];
         }
     },
+
+
 
     async getPois() {
         try {
