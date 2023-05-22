@@ -3,7 +3,9 @@
 
     import { onMount } from "svelte";
     import { poiService } from "../services/poi-service";
-
+    import { page } from '$app/stores';
+    let slug = $page.params.slug
+    console.log(slug)
     let name = 0;
     let description = ""
     let latitude = 0
@@ -20,7 +22,9 @@
     });
 
 
-    async function createPoi() {
+
+
+    async function edit_poi() {
         if (selectedCategory && name && description && latitude && longitude) {
             const poi = {
                 name: name,
@@ -28,23 +32,24 @@
                 latitude: latitude,
                 longitude: longitude,
                 category_id: selectedCategory,
+                id: slug
 
             };
-            const success = await poiService.create(poi);
+            const success = await poiService.edit_poi(poi);
             if (!success) {
-                message = "Failed to create POI not completed - some error occurred";
+                message = "Failed to edit POI not completed - some error occurred";
                 return;
             }
-            message = `Poi created`;
+            message = `Poi edit saved`;
         } else {
-            message = "Please select amount, method and candidate";
+            message = "Please entered required field";
         }
     }
 
 
 </script>
 
-<form on:submit|preventDefault={createPoi}>
+<form on:submit|preventDefault={edit_poi}>
     <div class="field">
         <label class="label" for="name">Enter POI name</label>
         <input bind:value={name} class="input" id="name" name="name" type="text" />

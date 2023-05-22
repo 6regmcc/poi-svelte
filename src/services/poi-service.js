@@ -68,6 +68,15 @@ export const poiService = {
         }
     },
 
+    async edit_poi(poi) {
+
+        try {
+            const response = await axios.patch(this.baseUrl + "/api/categories/" + poi.category_id + "/poi/" + poi.id, poi);
+            return response.status == 200;
+        } catch (error) {
+            return false;
+        }
+    },
     async getCategories() {
         try {
             const response = await axios.get(this.baseUrl + "/api/categories");
