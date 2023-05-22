@@ -110,6 +110,14 @@ export const poiService = {
         } catch (error) {
             return [];
         }
+    },
+    async getPoiById(id) {
+        try {
+            const response = await axios.get(this.baseUrl + "/api/poi/" + id)
+            return response.data
+        } catch (error) {
+            return 'error happened'
+        }
     }
 
 

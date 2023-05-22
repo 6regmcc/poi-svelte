@@ -4,22 +4,33 @@
     import { onMount } from "svelte";
     import { poiService } from "../services/poi-service";
     import { page } from '$app/stores';
+    import { goto } from "$app/navigation";
     let slug = $page.params.slug
-    console.log(slug)
-    let name = 0;
+    //console.log(slug)
+    let poi
+    onMount(async () => {
+        categoryList = await poiService.getCategories();
+        poi = await poiService.getPoiById(slug);
+        name = poi.name;
+        description = poi.description;
+        latitude = poi.latitude;
+        longitude = poi.longitude;
+        selectedCategory = poi.category_id;
+    });
+    let name;
     let description = ""
-    let latitude = 0
-    let longitude = 1
-
+    let latitude
+    let longitude
+    let selectedPoi = {}
 
     let categoryList = [];
     let selectedCategory = "";
 
     let message = "Create POI";
 
-    onMount(async () => {
-        categoryList = await poiService.getCategories();
-    });
+
+
+
 
 
 
@@ -31,7 +42,7 @@
                 description: description,
                 latitude: latitude,
                 longitude: longitude,
-                category_id: selectedCategory,
+                category: selectedCategory,
                 id: slug
 
             };
@@ -41,6 +52,7 @@
                 return;
             }
             message = `Poi edit saved`;
+            goto("/pois");
         } else {
             message = "Please entered required field";
         }
@@ -52,7 +64,7 @@
 <form on:submit|preventDefault={edit_poi}>
     <div class="field">
         <label class="label" for="name">Enter POI name</label>
-        <input bind:value={name} class="input" id="name" name="name" type="text" />
+        <input bind:value={name} class="input" id="name" name="name" type="text"  />
     </div>
     <div class="field">
         <label class="label" for="latitude">Enter latitude</label>
