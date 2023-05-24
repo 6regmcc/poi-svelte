@@ -29,12 +29,6 @@
     let message = "Create POI";
 
 
-
-
-
-
-
-
     async function edit_poi() {
         if (selectedCategory && name && description && latitude && longitude) {
             const poi = {

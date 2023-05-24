@@ -3,6 +3,9 @@
 
     import { onMount } from "svelte";
     import { poiService } from "../services/poi-service";
+    import {goto} from "$app/navigation";
+    import { tick } from 'svelte';
+
 
     let name = 0;
     let description = ""
@@ -35,6 +38,7 @@
                 message = "Failed to create POI not completed - some error occurred";
                 return;
             }
+
             message = `Poi created`;
         } else {
             message = "Please select amount, method and candidate";

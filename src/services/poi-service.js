@@ -10,9 +10,11 @@ export const poiService = {
             const response = await axios.post(`${this.baseUrl}/api/users/authenticate`, { email, password });
             axios.defaults.headers.common["Authorization"] = "Bearer " + response.data.token;
             if (response.data.success) {
+                console.log(response.data)
                 user.set({
                     email: email,
-                    token: response.data.token
+                    token: response.data.token,
+                    id: response.data.id
                 });
                 localStorage.donation = JSON.stringify({ email: email, token: response.data.token });
                 return true;
@@ -71,11 +73,20 @@ export const poiService = {
     async edit_poi(poi) {
 
         try {
-            const response = await axios.patch(this.baseUrl + "/api/categories/" + poi.category_id + "/poi/" + poi.id, poi);
+            const response = await axios.patch(this.baseUrl + "/api/categories/" + poi.category + "/poi/" + poi.id, poi);
             return response.status == 200;
         } catch (error) {
             return false;
         }
+    },
+    async edit_user(user, slug) {
+        try {
+            const response = await axios.patch(this.baseUrl + "/api/users/" + slug, user)
+            return response.status == 200;
+        } catch (error) {
+            return false;
+        }
+
     },
     async getCategories() {
         try {
@@ -118,6 +129,24 @@ export const poiService = {
         } catch (error) {
             return 'error happened'
         }
+    },
+    async createCategory(category){
+        //console.log("the category is " + JSON.stringify(category))
+        try {
+            const response = await axios.post(this.baseUrl + "/api/categories", category)
+            return response.status == 200;
+        } catch (error){
+            console.log('there was an error creating category')
+        }
+    },
+    async getUserByEmail(email){
+        try {
+            const response = await axios.get(this.baseUrl + "/api/users/email?email=" + email)
+            return response.data
+        } catch (error){
+            console.log('there was an error getting user by email')
+        }
+
     }
 
 
