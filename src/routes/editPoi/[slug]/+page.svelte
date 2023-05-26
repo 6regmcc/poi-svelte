@@ -4,7 +4,10 @@
 
     import MainNavigator from '$lib/MainNavigator.svelte';
     import EditPoi from '$lib/EditPoi.svelte'
+
     export let data;
+
+
 </script>
 
 <Header>
@@ -18,5 +21,8 @@
     <div class="column box has-text-centered">
         <h1 class="title is-4">Pois</h1>
         <EditPoi />
+
+
+
     </div>
 </div>

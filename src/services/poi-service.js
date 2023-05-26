@@ -79,6 +79,14 @@ export const poiService = {
             return false;
         }
     },
+    async addImage(poi){
+        try {
+            const response = await axios.patch(this.baseUrl + "/api/poi/" + poi.id + "/image", poi)
+            return response.status == 200
+        } catch(error) {
+            console.log(error)
+        }
+    },
     async edit_user(user, slug) {
         try {
             const response = await axios.patch(this.baseUrl + "/api/users/" + slug, user)

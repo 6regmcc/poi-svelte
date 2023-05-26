@@ -5,7 +5,9 @@
     import { poiService } from "../services/poi-service";
     import { page } from '$app/stores';
     import { goto } from "$app/navigation";
+
     let slug = $page.params.slug
+    import UploadWidgit from "./UploadWidgit.svelte";
     //console.log(slug)
     let poi
     onMount(async () => {
@@ -87,6 +89,7 @@
             <button class="button is-link is-light">Create POI</button>
         </div>
     </div>
+    <UploadWidgit />
     <div class="box">
         {message}
     </div>
