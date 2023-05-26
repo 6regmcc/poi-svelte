@@ -27,7 +27,7 @@
             })
 
         }
-        console.log("this is " + widget)
+
     })
 
     function handleClick(){

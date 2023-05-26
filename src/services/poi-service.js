@@ -157,6 +157,21 @@ export const poiService = {
             console.log('there was an error getting user by email')
         }
 
+    },
+
+    async removeImage(id, currentImage) {
+        
+        const payload = {
+            imageToDelete: currentImage.image
+        }
+        try {
+            const response = await axios.patch(this.baseUrl + "/api/poi/" + id +  "/removeImage", payload)
+            return response.status
+        } catch(error){
+            console.log(error)
+        }
+
+
     }
 
 

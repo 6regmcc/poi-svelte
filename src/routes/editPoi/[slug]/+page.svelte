@@ -6,17 +6,36 @@
     import EditPoi from '$lib/EditPoi.svelte'
 
     export let data;
+    import { onMount } from "svelte";
+    import { poiService} from "../../../services/poi-service.js";
+    import {page} from "$app/stores";
+    let slug = $page.params.slug
+    let imageArray = []
+    let poi
+    onMount(async () => {
 
+        poi = await poiService.getPoiById(slug);
+        imageArray = poi.imageURL
+
+
+    });
+    function deleteImage(currentImage){
+
+        const success = poiService.removeImage(slug, currentImage);
+    }
 
 </script>
 
 <Header>
     <MainNavigator />
 </Header>
-<h1>{data.slug}</h1>
+
 <div class="columns is-vcentered">
     <div class="column has-text-centered">
-        <img alt="Poi marker" src="poi_marker.png" width="300" />
+        {#each imageArray as image}
+            <img alt="Poi image" src={image} width="300" />
+            <button on:click={() => deleteImage({image})}>Delete Image</button>
+        {/each}
     </div>
     <div class="column box has-text-centered">
         <h1 class="title is-4">Pois</h1>
