@@ -3,6 +3,7 @@
     import { LeafletMap } from "../services/leaflet-map";
     import { onMount } from "svelte";
     import {poiService} from "../services/poi-service.js";
+    import {latestPoi} from "../stores.js";
 
     const mapConfig = {
         location: { lat: 52.160858, lng: -7.15242 },
@@ -21,6 +22,18 @@
         pois.forEach((poi) => {
             map.addMarker({ lat: poi.latitude, lng: poi.longitude },poi.name, 'Pois') ;
         });
+
+        function addPoiMarker(map, poi){
+            const poiStr = `${poi.name}`;
+            map.addMarker({lat: poi.latitude, lng: poi.longitude}, poiStr, "Pois");
+            map.moveTo(8, {lat: poi.latitude, lng: poi.longitude});
+        }
+
+        latestPoi.subscribe((poi) => {
+            if(poi && map){
+                addPoiMarker(map, poi)
+            }
+        })
 
     })
 </script>

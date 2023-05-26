@@ -5,3 +5,8 @@ export const user = writable({
     token: "",
     id: ""
 });
+
+
+export const latestPoi = writable(null);
+
+export const testStore = writable(null)

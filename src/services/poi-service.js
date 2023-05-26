@@ -1,6 +1,7 @@
 // @ts-nocheck
 import axios from "axios";
 import { user } from "../stores"
+import {latestPoi} from "../stores";
 
 export const poiService = {
     baseUrl: "http://localhost:4000",
@@ -64,6 +65,7 @@ export const poiService = {
 
         try {
             const response = await axios.post(this.baseUrl + "/api/categories/" + poi.category_id + "/poi", poi);
+            latestPoi.set(poi)
             return response.status == 200;
         } catch (error) {
             return false;

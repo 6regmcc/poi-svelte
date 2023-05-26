@@ -7,10 +7,11 @@
     import { tick } from 'svelte';
 
 
-    let name = 0;
+
+    let name = "";
     let description = ""
-    let latitude = 0
-    let longitude = 1
+    let latitude
+    let longitude
 
 
     let categoryList = [];
@@ -37,11 +38,17 @@
             if (!success) {
                 message = "Failed to create POI not completed - some error occurred";
                 return;
+            } else {
+                name = "";
+                description = ""
+                latitude = ""
+                longitude = ""
             }
 
             message = `Poi created`;
         } else {
             message = "Please select amount, method and candidate";
+
         }
     }
 
@@ -55,11 +62,11 @@
     </div>
     <div class="field">
         <label class="label" for="latitude">Enter latitude</label>
-        <input bind:value={latitude} class="input" id="latitude" name="latitude" type="number" />
+        <input bind:value={latitude} class="input" id="latitude" name="latitude" type="number" step="any"/>
     </div>
     <div class="field">
         <label class="label" for="longitude">Enter longitude</label>
-        <input bind:value={longitude} class="input" id="longitude" name="longitude" type="number" />
+        <input bind:value={longitude} class="input" id="longitude" name="longitude" type="number" step="any"/>
     </div>
     <div class="field">
         <label class="label" for="description">Enter description</label>

@@ -1,7 +1,7 @@
 <script>
     import { onMount } from "svelte";
     import { poiService } from "../services/poi-service.js";
-
+    import {testStore} from "../stores.js";
 
 
     let poiList = [];
