@@ -4,7 +4,7 @@
     import { onMount } from "svelte";
     import { poiService } from "../services/poi-service";
     import {goto} from "$app/navigation";
-    import { tick } from 'svelte';
+
 
 
 
@@ -85,6 +85,9 @@
     <div class="field">
         <div class="control">
             <button class="button is-link is-light">Create POI</button>
+        </div>
+        <div class="control">
+
         </div>
     </div>
     <div class="box">

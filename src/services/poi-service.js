@@ -4,7 +4,7 @@ import { user } from "../stores"
 import {latestPoi} from "../stores";
 
 export const poiService = {
-    baseUrl: "http://localhost:4000",
+    baseUrl: "https://poi-api.onrender.com",
 
     async login(email, password) {
         try {
@@ -160,13 +160,15 @@ export const poiService = {
     },
 
     async removeImage(id, currentImage) {
-        
+
         const payload = {
             imageToDelete: currentImage.image
         }
         try {
             const response = await axios.patch(this.baseUrl + "/api/poi/" + id +  "/removeImage", payload)
+            console.log(response.status)
             return response.status
+
         } catch(error){
             console.log(error)
         }

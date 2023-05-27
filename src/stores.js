@@ -10,3 +10,5 @@ export const user = writable({
 export const latestPoi = writable(null);
 
 export const testStore = writable(null)
+
+export const imageArray = writable([])

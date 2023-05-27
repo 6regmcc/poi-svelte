@@ -16,7 +16,7 @@
             }, (error, result)=>{
                 if(result.event === "success"){
                     imageURL = result.info.secure_url
-                    console.log(imageURL)
+
                     let poi = {
                         id: slug,
                         imageURL: imageURL
@@ -37,4 +37,4 @@
     }
 </script>
 
-<button on:click|preventDefault={handleClick}>Upload</button>
+<button on:click|preventDefault={handleClick}>Upload Image</button>

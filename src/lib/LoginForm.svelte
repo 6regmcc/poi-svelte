@@ -11,7 +11,7 @@
         console.log(`attemting to log in email: ${email} with password: ${password}`);
         let success = await poiService.login(email, password);
         if (success) {
-            goto("/categories");
+            goto("/pois");
         } else {
             email = "";
             password = "";

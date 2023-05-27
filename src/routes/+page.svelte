@@ -11,7 +11,7 @@
     <div class="column has-text-centered">
         <img width="300" src="/point-of-interest.png" alt="poi" />
     </div>
-    <div class="column">
+    <div class="column is-one-fifth">
         <h1 class="title">POI App</h1>
         <p>Add Points of interest! This is the home page</p>
     </div>

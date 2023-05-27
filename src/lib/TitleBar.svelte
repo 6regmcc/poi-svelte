@@ -4,7 +4,7 @@
     export let subTitle = "";
 </script>
 
-<div class="box has-text-centered columns m-2">
+<div class="box has-text-centered columns m-2  is-half">
     <div class="column">
         <img src="/poi_marker.png" width="60" alt="new_poi" />
     </div>
@@ -16,9 +16,9 @@
 
         {#if $user.email}
             <p>Logged in user</p>
-            <div class="is-size-7">{$user.email}</div>
+            <div >{$user.email}</div>
         {:else}
-            <div class="is-size-7">POI-Svelte</div>
+            <div >POI-Svelte</div>
         {/if}
     </div>
 </div>

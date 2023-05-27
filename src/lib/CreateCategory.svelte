@@ -5,7 +5,7 @@
     import { poiService } from "../services/poi-service";
     import {goto} from "$app/navigation";
 
-    let name = 0;
+    let name = "";
     let message = "Create Category";
 
 
@@ -19,6 +19,7 @@
             const success = await poiService.createCategory(category);
             console.log(success)
             goto("pois")
+            name = ""
 
         } else {
             message = "Please enter category name";

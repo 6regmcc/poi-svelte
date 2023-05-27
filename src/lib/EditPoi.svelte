@@ -6,9 +6,10 @@
     import { page } from '$app/stores';
     import { goto } from "$app/navigation";
 
+
     let slug = $page.params.slug
     import UploadWidgit from "./UploadWidgit.svelte";
-    //console.log(slug)
+
     let poi
     onMount(async () => {
         categoryList = await poiService.getCategories();
@@ -64,11 +65,11 @@
     </div>
     <div class="field">
         <label class="label" for="latitude">Enter latitude</label>
-        <input bind:value={latitude} class="input" id="latitude" name="latitude" type="number" />
+        <input bind:value={latitude} class="input" id="latitude" name="latitude" type="number" step="any"/>
     </div>
     <div class="field">
         <label class="label" for="longitude">Enter longitude</label>
-        <input bind:value={longitude} class="input" id="longitude" name="longitude" type="number" />
+        <input bind:value={longitude} class="input" id="longitude" name="longitude" type="number" step="any"/>
     </div>
     <div class="field">
         <label class="label" for="description">Enter description</label>
@@ -86,7 +87,7 @@
     </div>
     <div class="field">
         <div class="control">
-            <button class="button is-link is-light">Create POI</button>
+            <button class="button is-link is-light">Update POI</button>
         </div>
     </div>
     <UploadWidgit />

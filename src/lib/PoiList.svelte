@@ -40,9 +40,7 @@
             <td>
                 <a href="/editPoi/{poi._id}">Edit</a>
             </td>
-            <td>
-                <a>Delete</a>
-            </td>
+
 
         </tr>
     {/each}
